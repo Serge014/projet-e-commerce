@@ -18,19 +18,64 @@ export default function AddToCart({itemId, className, disabled}: {itemId?: numbe
 	const isDisabled = !itemId || !cartId || disabled;
 
 	return (
-		<div className={clsx('d-flex flex-wrap', className)} style={{gap: '15px'}}>
-			<SpecifyQty
-				disabled={isDisabled}
-				qty={qty}
-				setQty={setQty}
-			/>
+		<div className={clsx('d-flex flex-column', className)} style={{gap: '15px'}}>
+			{/* Sélecteur de quantité amélioré */}
+			<div className="d-flex align-items-center justify-content-between p-3 bg-light rounded">
+				<span className="fw-semibold">Quantité:</span>
+				<SpecifyQty
+					disabled={isDisabled}
+					qty={qty}
+					setQty={setQty}
+				/>
+			</div>
+
+			{/* Bouton d'ajout au panier amélioré */}
 			<Button
 				startIcon={<AddShoppingCartIcon />}
 				variant={'contained'}
 				size={'large'}
 				disabled={isDisabled}
 				onClick={onAddToCartClicked}
-			>Add To Cart</Button>
+				className="py-3 fw-bold"
+				style={{
+					background: isDisabled ? '#6c757d' : 'linear-gradient(45deg, #007bff, #0056b3)',
+					borderRadius: '12px',
+					boxShadow: isDisabled ? 'none' : '0 4px 15px rgba(0, 123, 255, 0.3)',
+					transition: 'all 0.3s ease'
+				}}
+			>
+				{isDisabled ? 'Indisponible' : 'Ajouter au panier'}
+			</Button>
+
+			{/* Informations supplémentaires */}
+			{!isDisabled && (
+				<div className="mt-3 p-3 bg-success bg-opacity-10 rounded border border-success">
+					<div className="d-flex align-items-center mb-2">
+						<i className="bi bi-check-circle-fill text-success me-2"></i>
+						<span className="fw-semibold text-success">Produit disponible</span>
+					</div>
+					<div className="small text-muted">
+						Livraison gratuite • Retour sous 30 jours • Garantie 2 ans
+					</div>
+				</div>
+			)}
+
+			{/* Bouton d'achat immédiat */}
+			{!isDisabled && (
+				<Button
+					variant={'outlined'}
+					size={'large'}
+					className="py-3 fw-bold border-2"
+					style={{
+						borderRadius: '12px',
+						borderColor: '#28a745',
+						color: '#28a745',
+						transition: 'all 0.3s ease'
+					}}
+				>
+					Acheter maintenant
+				</Button>
+			)}
 		</div>
 	);
 }

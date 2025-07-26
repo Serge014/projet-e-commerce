@@ -12,7 +12,7 @@ export default async function HomePage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-gradient-primary text-white py-5">
+      <section className="text-white py-5" style={{ backgroundColor: '#05f' }}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -306,7 +306,7 @@ const fetchProductsOnMain = async (): Promise<IProduct[]> => {
       sort_price: 0,
       sort_in_stock: 1
     },
-    {
+    /*{
       product_id: 5,
       title: 'Montre Apple Watch Series 8',
       url_key: 'apple-watch-series-8',
@@ -340,7 +340,7 @@ const fetchProductsOnMain = async (): Promise<IProduct[]> => {
       deleted_at: null,
       sort_price: 0,
       sort_in_stock: 1
-    }
+    }*/
   ];
 
   return demoProducts;
@@ -358,8 +358,8 @@ function DemoProduct({product}: {product: IProduct}) {
         return '/assets/images/products/Casque-Sans.jpg';
               case 4:
           return '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg';
-        case 5:
-          return '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg';
+        /*case 5:
+          return '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg';*/
         default:
           return '/assets/images/products/samsung-galaxy-s23.jpg';
     }

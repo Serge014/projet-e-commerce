@@ -124,11 +124,11 @@ export default function Footer() {
 						<ul className="list-unstyled">
 							<li className="mb-2 text-white">
 								<i className="bi bi-geo-alt me-1"></i>
-								Abidjan, Côte d'Ivoire
+								Boulevard François Mitterand, Abidjan, Côte d'Ivoire
 							</li>
 							<li className="mb-2 text-white">
 								<i className="bi bi-telephone me-1"></i>
-								+225 07 77 11 14 00 
+								+225 07 77 11 14 00
 							</li>
 							<li className="mb-2 text-white">
 								<i className="bi bi-envelope me-1"></i>
@@ -148,13 +148,13 @@ export default function Footer() {
 							© 2025 TechStore. Tous droits réservés.
 						</p>
 					</div>
-					<div className="col-md-6 text-md-end">
+					{/*<div className="col-md-6 text-md-end">
 						<div className="d-flex gap-3 justify-content-md-end">
 							<img src="/visa.png" alt="Visa" className="payment-icon" />
 							<img src="/mastercard.png" alt="Mastercard" className="payment-icon" />
 							<img src="/paypal.png" alt="PayPal" className="payment-icon" />
 						</div>
-					</div>
+					</div>*/}
 				</div>
 			</div>
 		</footer>

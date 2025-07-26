@@ -82,8 +82,8 @@ const fetchCategoriesMenu = async (): Promise<ICategory[]> => {
 			tree_sort: '2',
 			level: 1,
 			custom_link: null
-		},
-		/*{
+		},/*
+		{
 			category_id: 3,
 			title: 'Livres',
 			url_key: 'livres',

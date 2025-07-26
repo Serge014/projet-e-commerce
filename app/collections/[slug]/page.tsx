@@ -8,7 +8,7 @@ interface IProps {params: {slug: string}};
 
 // Données de démonstration pour les catégories
 const demoCategories = [
-	{
+	/*{
 		category_id: 1,
 		title: 'Smartphones',
 		url_key: 'smartphones',
@@ -31,7 +31,7 @@ const demoCategories = [
 		title: 'Montres Connectées',
 		url_key: 'montres-connectees',
 		description: 'Montres intelligentes pour suivre votre santé et rester connecté.'
-	},
+	},*/
 	{
 		category_id: 5,
 		title: 'Électronique',
@@ -53,197 +53,161 @@ const fetchCategory = async (slug: string) => {
 const fetchProductsInCategory = async (slug: string) => {
 	// Données de démonstration pour les produits par catégorie
 	const productsByCategory: {[key: string]: any[]} = {
-		'smartphones': [
+		/*'smartphones': [
 			{
 				product_id: 1,
-				title: 'Smartphone Galaxy S23',
+				title: 'Smartphone Galaxy S23 Ultra',
 				url_key: 'smartphone-galaxy-s23',
 				sku: 'GAL-S23-001',
-				description: 'Smartphone Samsung Galaxy S23 avec écran 6.1" et appareil photo 50MP',
-				image: '/assets/images/products/samsung-galaxy-s23.jpg',
-				in_stock: true
+				description: 'Smartphone Samsung Galaxy S23 Ultra avec écran 6.8" Dynamic AMOLED 2X et appareil photo 200MP',
+				image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=400&fit=crop',
+				price: 1299.99,
+				oldPrice: 1499.99,
+				in_stock: true,
+				manufacturer: 'Samsung'
 			}
 		],
 		'ordinateurs-portables': [
 			{
 				product_id: 2,
-				title: 'Ordinateur Portable MacBook Pro',
+				title: 'MacBook Pro 14" avec puce M3 Pro',
 				url_key: 'macbook-pro-13',
 				sku: 'MAC-PRO-001',
-				description: 'MacBook Pro 13" avec puce M2 et 8GB de RAM unifiée',
-				image: '/assets/images/products/probook.jpeg',
-				in_stock: true
+				description: 'MacBook Pro 14" avec puce M3 Pro, 18GB de RAM unifiée et 512GB de stockage SSD',
+				image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+				price: 2499.99,
+				oldPrice: null,
+				in_stock: true,
+				manufacturer: 'Apple'
 			}
 		],
 		'audio-casques': [
 			{
 				product_id: 3,
-				title: 'Casque Audio Sony WH-1000XM4',
+				title: 'Casque Audio Sony WH-1000XM5',
 				url_key: 'casque-sony-wh1000xm4',
 				sku: 'SONY-CAS-001',
-				description: 'Casque sans fil avec réduction de bruit active',
-				image: '/assets/images/products/Casque-Sans.jpg',
-				in_stock: true
+				description: 'Casque audio sans fil Sony WH-1000XM5 avec réduction de bruit active de nouvelle génération',
+				image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+				price: 399.99,
+				oldPrice: 449.99,
+				in_stock: true,
+				manufacturer: 'Sony'
 			}
 		],
 		'montres-connectees': [
 			{
 				product_id: 4,
-				title: 'Montre Apple Watch Series 8',
+				title: 'Apple Watch Series 8',
 				url_key: 'apple-watch-series-8',
 				sku: 'APPLE-WATCH-001',
-				description: 'Montre connectée Apple Watch Series 8 avec suivi santé avancé',
-				image: '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg',
-				in_stock: true
-			},
-			{
-				product_id: 5,
-				title: 'Montre Apple Watch Series 8',
-				url_key: 'apple-watch-series-8-2',
-				sku: 'APPLE-WATCH-002',
-				description: 'Montre connectée Apple Watch Series 8 avec suivi santé avancé',
-				image: '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg',
-				in_stock: true
+				description: 'Apple Watch Series 8 avec suivi avancé de la santé, détection des chutes, ECG et monitoring de la température',
+				image: 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400&h=400&fit=crop',
+				price: 449.99,
+				oldPrice: 499.99,
+				in_stock: true,
+				manufacturer: 'Apple'
 			}
-		],
+		],*/
 		'electronique': [
 			{
-				product_id: 6,
-				title: 'Tablette iPad Pro 12.9"',
-				url_key: 'ipad-pro-12-9',
-				sku: 'APPLE-IPAD-001',
-				description: 'Tablette iPad Pro 12.9" avec puce M2 et écran Liquid Retina XDR',
-				image: '/assets/images/products/samsung-galaxy-s23.jpg',
-				in_stock: true
+				product_id: 1,
+				title: 'Smartphone Galaxy S23 Ultra',
+				url_key: 'smartphone-galaxy-s23',
+				sku: 'GAL-S23-001',
+				description: 'Smartphone Samsung Galaxy S23 Ultra avec écran 6.8" Dynamic AMOLED 2X et appareil photo 200MP',
+				image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=400&fit=crop',
+				price: 1299.99,
+				oldPrice: 1499.99,
+				in_stock: true,
+				manufacturer: 'Samsung'
 			},
 			{
-				product_id: 7,
-				title: 'Écran Gaming 27" 4K',
-				url_key: 'ecran-gaming-27-4k',
-				sku: 'LG-ECRAN-001',
-				description: 'Écran gaming LG 27" 4K avec 144Hz et technologie FreeSync',
-				image: '/assets/images/products/probook.jpeg',
-				in_stock: true
+				product_id: 2,
+				title: 'MacBook Pro 14" avec puce M3 Pro',
+				url_key: 'macbook-pro-13',
+				sku: 'MAC-PRO-001',
+				description: 'MacBook Pro 14" avec puce M3 Pro, 18GB de RAM unifiée et 512GB de stockage SSD',
+				image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+				price: 2499.99,
+				oldPrice: null,
+				in_stock: true,
+				manufacturer: 'Apple'
 			},
 			{
-				product_id: 8,
-				title: 'Clavier Mécanique RGB',
-				url_key: 'clavier-mecanique-rgb',
-				sku: 'RAZER-KB-001',
-				description: 'Clavier mécanique Razer avec switches optiques et éclairage RGB',
-				image: '/assets/images/products/Casque-Sans.jpg',
-				in_stock: true
+				product_id: 3,
+				title: 'Casque Audio Sony WH-1000XM5',
+				url_key: 'casque-sony-wh1000xm4',
+				sku: 'SONY-CAS-001',
+				description: 'Casque audio sans fil Sony WH-1000XM5 avec réduction de bruit active de nouvelle génération',
+				image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+				price: 399.99,
+				oldPrice: 449.99,
+				in_stock: true,
+				manufacturer: 'Sony'
 			},
 			{
-				product_id: 9,
-				title: 'Souris Gaming Sans Fil',
-				url_key: 'souris-gaming-sans-fil',
-				sku: 'LOGITECH-MOUSE-001',
-				description: 'Souris gaming Logitech G Pro X Superlight avec capteur HERO 25K',
-				image: '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg',
-				in_stock: true
-			},
-			{
-				product_id: 10,
-				title: 'Webcam 4K Pro',
-				url_key: 'webcam-4k-pro',
-				sku: 'LOGITECH-WEBCAM-001',
-				description: 'Webcam Logitech Brio 4K avec autofocus et micro intégré',
-				image: '/assets/images/products/samsung-galaxy-s23.jpg',
-				in_stock: false
-			},
-			{
-				product_id: 11,
-				title: 'Disque SSD NVMe 1TB',
-				url_key: 'ssd-nvme-1tb',
-				sku: 'SAMSUNG-SSD-001',
-				description: 'Disque SSD Samsung 970 EVO Plus 1TB avec vitesse de lecture jusqu\'à 3,500 MB/s',
-				image: '/assets/images/products/probook.jpeg',
-				in_stock: true
+				product_id: 4,
+				title: 'Apple Watch Series 8',
+				url_key: 'apple-watch-series-8',
+				sku: 'APPLE-WATCH-001',
+				description: 'Apple Watch Series 8 avec suivi avancé de la santé, détection des chutes, ECG et monitoring de la température',
+				image: 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400&h=400&fit=crop',
+				price: 449.99,
+				oldPrice: 499.99,
+				in_stock: true,
+				manufacturer: 'Apple'
 			}
 		],
 		'vetements': [
 			{
-				product_id: 12,
+				product_id: 6,
 				title: 'T-shirt Premium Cotton',
-				url_key: 't-shirt-premium-cotton',
-				sku: 'TSHIRT-COTTON-001',
+				url_key: 'tshirt-premium-cotton',
+				sku: 'TSHIRT-001',
 				description: 'T-shirt en coton premium 100% bio, coupe moderne et confortable',
-				image: '/assets/images/products/samsung-galaxy-s23.jpg',
-				in_stock: true
+				image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+				price: 29.99,
+				oldPrice: 39.99,
+				in_stock: true,
+				manufacturer: 'EcoWear'
 			},
-			{
-				product_id: 13,
+			/*{
+				product_id: 7,
 				title: 'Jean Slim Fit Premium',
 				url_key: 'jean-slim-fit-premium',
-				sku: 'JEAN-SLIM-001',
-				description: 'Jean slim fit en denim premium avec stretch pour un confort optimal',
-				image: '/assets/images/products/probook.jpeg',
-				in_stock: true
+				sku: 'JEAN-001',
+				description: 'Jean slim fit en denim premium, coupe moderne et élégante',
+				image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
+				price: 89.99,
+				oldPrice: 119.99,
+				in_stock: true,
+				manufacturer: 'DenimCo'
 			},
 			{
-				product_id: 14,
-				title: 'Pull Hiver Laine Mérinos',
-				url_key: 'pull-hiver-laine-merinos',
-				sku: 'PULL-MERINOS-001',
-				description: 'Pull en laine mérinos 100% naturelle, chaud et respirant',
-				image: '/assets/images/products/Casque-Sans.jpg',
-				in_stock: true
+				product_id: 8,
+				title: 'Sneakers Urban Comfort',
+				url_key: 'sneakers-urban-comfort',
+				sku: 'SNEAKERS-001',
+				description: 'Sneakers urbaines avec technologie de confort avancée, design moderne',
+				image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+				price: 129.99,
+				oldPrice: 159.99,
+				in_stock: true,
+				manufacturer: 'UrbanStep'
 			},
 			{
-				product_id: 15,
-				title: 'Veste Bomber Cuir',
-				url_key: 'veste-bomber-cuir',
-				sku: 'VESTE-CUIR-001',
-				description: 'Veste bomber en cuir véritable, style rétro et intemporel',
-				image: '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg',
-				in_stock: false
-			},
-			{
-				product_id: 16,
-				title: 'Robe Cocktail Élégante',
-				url_key: 'robe-cocktail-elegante',
-				sku: 'ROBE-COCKTAIL-001',
-				description: 'Robe cocktail en soie naturelle, coupe ajustée et élégante',
-				image: '/assets/images/products/samsung-galaxy-s23.jpg',
-				in_stock: true
-			},
-			{
-				product_id: 17,
-				title: 'Costume Business 3 Pièces',
-				url_key: 'costume-business-3-pieces',
-				sku: 'COSTUME-3P-001',
-				description: 'Costume business 3 pièces en laine italienne, coupe moderne',
-				image: '/assets/images/products/probook.jpeg',
-				in_stock: true
-			},
-			{
-				product_id: 18,
-				title: 'Sneakers Urban Style',
-				url_key: 'sneakers-urban-style',
-				sku: 'SNEAKERS-URBAN-001',
-				description: 'Sneakers urbaines avec semelle amortissante et design contemporain',
-				image: '/assets/images/products/Casque-Sans.jpg',
-				in_stock: true
-			},
-			{
-				product_id: 19,
-				title: 'Sac à Dos Laptop 15"',
-				url_key: 'sac-a-dos-laptop-15',
-				sku: 'SAC-LAPTOP-001',
-				description: 'Sac à dos spécialement conçu pour ordinateur portable 15", compartiments organisés',
-				image: '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg',
-				in_stock: true
-			},
-			{
-				product_id: 20,
-				title: 'Cravate Soie Italienne',
-				url_key: 'cravate-soie-italienne',
-				sku: 'CRAVATE-SOIE-001',
-				description: 'Cravate en soie italienne 100%, motifs élégants et finition soignée',
-				image: '/assets/images/products/samsung-galaxy-s23.jpg',
-				in_stock: true
-			}
+				product_id: 9,
+				title: 'Veste Bomber Style',
+				url_key: 'veste-bomber-style',
+				sku: 'VESTE-001',
+				description: 'Veste bomber style urbain, matériaux premium et design contemporain',
+				image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+				price: 199.99,
+				oldPrice: 249.99,
+				in_stock: true,
+				manufacturer: 'UrbanStyle'
+			}*/
 		]
 	};
 
@@ -263,7 +227,7 @@ export default async function CategoryPage({params: {slug}}: IProps) {
 	return (
 		<main>
 			{/* Hero Section */}
-			<section className="bg-gradient-primary text-white py-5">
+			<section className="bg-gradient-primary text-bmack py-5">
 				<div className="container">
 					<div className="row">
 						<div className="col-12">
@@ -320,39 +284,95 @@ export default async function CategoryPage({params: {slug}}: IProps) {
 							<div className="row g-4">
 								{products.map((product) => (
 									<div key={product.product_id} className="col-md-6 col-lg-4 col-xl-3">
-										<div className="card h-100 border-0 shadow-sm">
-											<div className="card-img-top position-relative" style={{height: '200px', overflow: 'hidden'}}>
-												<Image
+										<div className="card h-100 border-0 shadow-lg rounded-3 product-card">
+											{/* Image du produit */}
+											<div className="card-img-top position-relative" style={{height: '250px', overflow: 'hidden'}}>
+												<img
 													src={product.image}
 													alt={product.title}
-													fill
-													className="card-img-top"
+													className="w-100 h-100"
 													style={{objectFit: 'cover'}}
 												/>
+												{/* Badges */}
+												<div className="position-absolute top-0 start-0 m-2">
+													{product.oldPrice && (
+														<span className="badge bg-danger fs-6">
+															-{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%
+														</span>
+													)}
+												</div>
+												<div className="position-absolute top-0 end-0 m-2">
+													<span className={`badge ${product.in_stock ? 'bg-success' : 'bg-danger'} fs-6`}>
+														{product.in_stock ? 'En stock' : 'Rupture'}
+													</span>
+												</div>
 											</div>
-											<div className="card-body d-flex flex-column">
-												<h5 className="card-title fw-bold">
-													<Link href={`/products/${product.url_key}`} className="text-decoration-none">
+											
+											<div className="card-body d-flex flex-column p-4">
+												{/* Fabricant */}
+												{product.manufacturer && (
+													<div className="mb-2">
+														<small className="text-primary fw-semibold">
+															{product.manufacturer}
+														</small>
+													</div>
+												)}
+												
+												{/* Titre */}
+												<h5 className="card-title fw-bold mb-2">
+													<Link href={`/products/${product.url_key}`} className="text-decoration-none text-dark">
 														{product.title}
 													</Link>
 												</h5>
-												<p className="card-text text-muted small flex-grow-1">
-													{product.description}
+												
+												{/* Description */}
+												<p className="card-text text-muted small flex-grow-1 mb-3">
+													{product.description.length > 100 
+														? `${product.description.substring(0, 100)}...` 
+														: product.description
+													}
 												</p>
+												
+												{/* Prix */}
+												<div className="mb-3">
+													{product.price && (
+														<div className="d-flex align-items-baseline gap-2">
+															<span className="fs-4 fw-bold text-primary">
+																{product.price.toFixed(2)} €
+															</span>
+															{product.oldPrice && (
+																<span className="text-decoration-line-through text-muted">
+																	{product.oldPrice.toFixed(2)} €
+																</span>
+															)}
+														</div>
+													)}
+												</div>
+												
+												{/* SKU */}
+												<div className="mb-3">
+													<small className="text-muted">
+														Réf: {product.sku}
+													</small>
+												</div>
+												
+												{/* Boutons d'action */}
 												<div className="mt-auto">
-													<div className="d-flex justify-content-between align-items-center mb-2">
-														<small className="text-muted">SKU: {product.sku}</small>
-														<span className={`badge ${product.in_stock ? 'bg-success' : 'bg-danger'}`}>
-															{product.in_stock ? 'En stock' : 'Rupture'}
-														</span>
+													<div className="d-grid gap-2">
+														<Link 
+															href={`/products/${product.url_key}`}
+															className="btn btn-primary btn-lg"
+														>
+															<i className="bi bi-eye me-2"></i>
+															Voir le produit
+														</Link>
+														{product.in_stock && (
+															<button className="btn btn-outline-success">
+																<i className="bi bi-cart-plus me-2"></i>
+																Ajouter au panier
+															</button>
+														)}
 													</div>
-													<Link 
-														href={`/products/${product.url_key}`}
-														className="btn btn-primary w-100"
-													>
-														<i className="bi bi-eye me-2"></i>
-														Voir le produit
-													</Link>
 												</div>
 											</div>
 										</div>

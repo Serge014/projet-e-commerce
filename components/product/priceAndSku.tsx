@@ -31,24 +31,90 @@ export default function PriceAndSku({product, variant, className, settings}: IPr
 
 	return (
 		<div className={clsx(className)}>
-			{price?.price && <p>
-				{price.isFrom && <span className={'small text-muted d-inline-block me-2'}>From:</span>}
-				<span className={clsx('fs-3 fw-bold', {'text-danger': price.oldPrice})}>{formatCurrency(price.price)}</span>
-				{price.oldPrice && <span className={'text-decoration-line-through text-muted d-inline-block ms-2'}>{formatCurrency(price.oldPrice)}</span>}
-			</p>}
-			{benefit && <p>
-				<label>You save:</label>
-				<span className={'text-danger d-inline-block ms-2'}>{formatCurrency(benefit)}</span>
-			</p>}
-			{(!product.has_variants || variant) && <>
-				<p className={clsx({'text-success': isInStock, 'text-muted': !isInStock})}>
-					{isInStock && 'In stock'}
-					{!isInStock && 'Out of stock'}
-				</p>
-				{(product.sku || variant?.sku) && <p>
-					SKU: <span className='text-muted'>{variant?.sku || product.sku}</span>
-				</p>}
-			</>}
+			{/* Prix principal */}
+			{price?.price && (
+				<div className="mb-3">
+					{price.isFrom && (
+						<div className="text-muted small mb-1">
+							<i className="bi bi-arrow-up-circle me-1"></i>
+							À partir de:
+						</div>
+					)}
+					<div className="d-flex align-items-baseline flex-wrap">
+						<span className={clsx('fs-1 fw-bold text-primary', {'text-danger': price.oldPrice})}>
+							{formatCurrency(price.price)}
+						</span>
+						{price.oldPrice && (
+							<span className="text-decoration-line-through text-muted ms-3 fs-4">
+								{formatCurrency(price.oldPrice)}
+							</span>
+						)}
+					</div>
+				</div>
+			)}
+
+			{/* Économies réalisées */}
+			{benefit && (
+				<div className="mb-3 p-3 bg-success bg-opacity-10 rounded border border-success">
+					<div className="d-flex align-items-center">
+						<i className="bi bi-piggy-bank text-success me-2 fs-5"></i>
+						<div>
+							<div className="fw-semibold text-success">Vous économisez</div>
+							<div className="fs-5 fw-bold text-success">{formatCurrency(benefit)}</div>
+						</div>
+					</div>
+				</div>
+			)}
+
+			{/* Informations de stock et SKU */}
+			{(!product.has_variants || variant) && (
+				<div className="row g-3">
+					<div className="col-6">
+						<div className="p-3 bg-light rounded text-center">
+							<div className="small text-muted mb-1">Statut</div>
+							<div className={clsx('fw-bold', {'text-success': isInStock, 'text-danger': !isInStock})}>
+								{isInStock ? (
+									<>
+										<i className="bi bi-check-circle-fill me-1"></i>
+										En stock
+									</>
+								) : (
+									<>
+										<i className="bi bi-x-circle-fill me-1"></i>
+										Rupture
+									</>
+								)}
+							</div>
+						</div>
+					</div>
+					<div className="col-6">
+						<div className="p-3 bg-light rounded text-center">
+							<div className="small text-muted mb-1">Référence</div>
+							<div className="fw-bold text-primary">
+								{variant?.sku || product.sku}
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+
+			{/* Informations supplémentaires */}
+			<div className="mt-3 p-3 bg-info bg-opacity-10 rounded border border-info">
+				<div className="row text-center">
+					<div className="col-4">
+						<div className="small text-muted">Livraison</div>
+						<div className="fw-bold text-success">Gratuite</div>
+					</div>
+					<div className="col-4">
+						<div className="small text-muted">Retour</div>
+						<div className="fw-bold text-primary">30 jours</div>
+					</div>
+					<div className="col-4">
+						<div className="small text-muted">Garantie</div>
+						<div className="fw-bold text-warning">2 ans</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

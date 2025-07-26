@@ -12,9 +12,9 @@ export default function SelectVariantDialog({open, onClose, neededSelectVariant}
 
 	return (
 		<Dialog onClose={onClose} open={open}>
-			<DialogTitle>Veuillez sélectionner une variante</DialogTitle>
+			<DialogTitle>Please Select variant</DialogTitle>
 			<DialogContent>
-				<p>Non implémenté. Ce scénario n'est pas censé se produire dans ce modèle.</p>
+				<p>Not implemented. This scenario is not supposed to happen in this template</p>
 			</DialogContent>
 		</Dialog>
 	);

@@ -7,7 +7,7 @@ export default async function ContactPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-gradient-primary text-white py-5">
+      <section className="text-white py-5" style={{ backgroundColor: '#05f' }}>
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
@@ -42,8 +42,8 @@ export default async function ContactPage() {
                       Adresse
                     </h5>
                     <p className="text-muted">
-                      123 Rue du Commerce<br />
-                      75001 Paris, France
+                      Boulevard François Mitterand<br />
+                      Abidjan, Côte d'Ivoire
                     </p>
                   </div>
 
@@ -53,8 +53,8 @@ export default async function ContactPage() {
                       Téléphone
                     </h5>
                     <p className="text-muted">
-                      <a href="tel:+33123456789" className="text-decoration-none">
-                        +33 1 23 45 67 89
+                      <a href="tel:+2250777111400" className="text-decoration-none">
+                        +225 07 77 11 14 00
                       </a>
                     </p>
                   </div>

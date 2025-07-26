@@ -6,7 +6,7 @@ export default async function CollectionsPage() {
 
   // Données de démonstration pour les collections
   const collections = [
-    {
+    /*{
       category_id: 1,
       title: 'Smartphones',
       url_key: 'smartphones',
@@ -33,7 +33,7 @@ export default async function CollectionsPage() {
       url_key: 'montres-connectees',
       description: 'Montres intelligentes pour votre bien-être',
       image: '/assets/images/products/Apple-Event-Apple-Watch-Series-7-01.jpg'
-    },
+    },*/
     {
       category_id: 5,
       title: 'Électronique',
@@ -46,14 +46,14 @@ export default async function CollectionsPage() {
       title: 'Vêtements',
       url_key: 'vetements',
       description: 'Mode et vêtements tendance pour tous les styles',
-      image: '/assets/images/products/Casque-Sans.jpg'
+      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop'
     }
   ];
 
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-gradient-primary text-white py-5">
+      <section className="text-white py-5" style={{ backgroundColor: '#05f' }}>
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">

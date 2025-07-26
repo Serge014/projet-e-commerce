@@ -1,33 +1,26 @@
-:root {
-  --primary-color: #2563eb;
-  --secondary-color: #64748b;
-  --accent-color: #f59e0b;
-  --success-color: #10b981;
-  --danger-color: #ef4444;
-  --dark-color: #1e293b;
-  --light-color: #f8fafc;
-  --border-color: #e2e8f0;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --transition: all 0.3s ease;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles personnalisés pour la page de détails du produit */
+.product-gallery-container {
+  position: relative;
 }
 
-html {
-  font-size: 16px;
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  scroll-behavior: smooth;
+.product-gallery-container img {
+  transition: transform 0.3s ease;
+  border-radius: 12px;
 }
 
-body {
-  color: var(--text-primary);
-  background-color: #ffffff;
-  line-height: 1.6;
+.product-gallery-container img:hover {
+  transform: scale(1.02);
 }
 
-/* Animations */
+/* Animation pour les badges */
+.badge {
+  animation: fadeInUp 0.5s ease-out;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -39,191 +32,316 @@ body {
   }
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.slide-in-right {
-  animation: slideInRight 0.4s ease-out;
-}
-
-/* Custom Bootstrap overrides */
-.btn-primary {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  transition: var(--transition);
-}
-
-.btn-primary:hover {
-  background-color: #1d4ed8;
-  border-color: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-outline-primary {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-  transition: var(--transition);
-}
-
-.btn-outline-primary:hover {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
+/* Styles pour les cartes */
 .card {
-  border: none;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border-radius: 12px;
-  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
 }
 
-.hover-card {
-  transition: var(--transition);
+/* Styles pour les boutons */
+.btn {
+  transition: all 0.3s ease;
 }
 
-.hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+.btn:hover {
+  transform: translateY(-1px);
 }
 
-.navbar-brand {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--primary-color) !important;
-}
-
-.nav-link {
-  font-weight: 500;
-  transition: var(--transition);
-  position: relative;
-}
-
-.nav-link:hover {
-  color: var(--primary-color) !important;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background-color: var(--primary-color);
-  transition: var(--transition);
-  transform: translateX(-50%);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Custom utility classes */
-.text-gradient {
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+/* Styles pour les prix */
+.price-display {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.bg-gradient-primary {
-  background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+/* Styles pour les informations de stock */
+.stock-info {
+  position: relative;
+  overflow: hidden;
 }
 
-.border-radius-lg {
+.stock-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.stock-info:hover::before {
+  left: 100%;
+}
+
+/* Styles pour les breadcrumbs */
+.breadcrumb {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+}
+
+/* Styles pour les onglets */
+.nav-tabs .nav-link {
+  border: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom-color: #007bff;
+  background: none;
+  color: #007bff;
+}
+
+/* Styles pour les modales */
+.modal-backdrop {
+  backdrop-filter: blur(5px);
+}
+
+/* Styles pour les images de produit */
+.product-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Styles pour les informations de livraison */
+.shipping-info {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+}
+
+/* Styles pour les garanties */
+.warranty-info {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  border: 1px solid #ffc107;
+  border-radius: 12px;
+}
+
+/* Styles pour les caractéristiques */
+.feature-item {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.feature-item:hover {
+  background-color: #f8f9fa;
+  transform: translateX(5px);
+}
+
+/* Styles pour les boutons d'action */
+.action-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.action-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Styles pour les prix réduits */
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Styles pour les informations de produit */
+.product-info-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid #dee2e6;
   border-radius: 16px;
 }
 
-.shadow-custom {
-  box-shadow: var(--shadow-lg);
+/* Styles pour les galeries d'images */
+.gallery-thumbnail {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  border: 2px solid transparent;
 }
 
-/* Category icons */
-.category-icon {
-  transition: var(--transition);
+.gallery-thumbnail:hover {
+  border-color: #007bff;
+  transform: scale(1.05);
 }
 
-.hover-card:hover .category-icon {
-  transform: scale(1.1);
+.gallery-thumbnail.active {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-/* Payment icons */
-.payment-icon {
-  height: 30px;
-  opacity: 0.7;
-  transition: var(--transition);
+/* Styles pour les notifications */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-.payment-icon:hover {
+/* Styles pour les tooltips */
+.tooltip-custom {
+  position: relative;
+}
+
+.tooltip-custom::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.tooltip-custom:hover::after {
   opacity: 1;
+  visibility: visible;
 }
 
-/* Social media icons */
-.social-icon {
-  transition: var(--transition);
+/* Styles pour les animations de chargement */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
 }
 
-.social-icon:hover {
-  transform: translateY(-2px);
-  color: var(--primary-color) !important;
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
-/* Responsive improvements */
+/* Styles pour les responsive */
 @media (max-width: 768px) {
-  html {
+  .product-gallery-container {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    margin-bottom: 15px;
+  }
+  
+  .breadcrumb {
     font-size: 14px;
   }
-  
-  .display-4 {
-    font-size: 2rem;
+}
+
+/* Styles pour les cartes de produits dans les collections */
+.product-card {
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  border-color: #007bff;
+}
+
+.product-card .card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Styles pour les badges de réduction */
+.badge.bg-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+  animation: pulse 2s infinite;
+}
+
+/* Styles pour les boutons d'action */
+.btn-outline-success:hover {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  border-color: #28a745;
+  transform: translateY(-1px);
+}
+
+/* Styles pour les thèmes sombres */
+@media (prefers-color-scheme: dark) {
+  .product-info-card {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    border-color: #4a5568;
   }
   
-  .display-1 {
-    font-size: 3rem;
+  .shipping-info {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    border-color: #4a5568;
   }
-}
-
-/* Loading states */
-.spinner-border-sm {
-  width: 1rem;
-  height: 1rem;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8;
+  
+  .product-card {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    border-color: #4a5568;
+  }
+  
+  .product-card:hover {
+    border-color: #4299e1;
+  }
 }
