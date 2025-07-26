@@ -1,13 +1,26 @@
 'use client';
 
-import {useState, useCallback} from 'react';
-import {IProductItem, IVariant} from 'boundless-api-client';
+import { useState, useCallback } from 'react';
+import { IProductItem, IVariant } from 'boundless-api-client';
 import AddToCart from '@/components/product/addToCart';
-import {IBasicSettings} from 'boundless-commerce-components';
+import { IBasicSettings } from 'boundless-commerce-components';
 import PriceAndSku from '@/components/product/priceAndSku';
 
-export default function VariantPicker({product, settings}: {product: IProductItem, settings?: IBasicSettings}) {
-  const [selectedVariant, setSelectedVariant] = useState<IVariant|undefined>();
+// Type temporaire pour forcer extendedVariants avec variants et characteristics
+type ExtendedVariantsWithProps = {
+  variants: IVariant[];
+  characteristics?: {
+    characteristic_id: string;
+    title: string;
+    values?: {
+      value_id: string;
+      title: string;
+    }[];
+  }[];
+};
+
+export default function VariantPicker({ product, settings }: { product: IProductItem; settings?: IBasicSettings }) {
+  const [selectedVariant, setSelectedVariant] = useState<IVariant | undefined>();
 
   const onCaseChange = useCallback((value: {}, variant?: IVariant) => {
     setSelectedVariant(variant ? variant : undefined);
@@ -17,11 +30,15 @@ export default function VariantPicker({product, settings}: {product: IProductIte
     return null;
   }
 
-  // Vérifier si le produit a des variantes dans product.variants
-  const hasExtendedVariants = product.has_variants && product.variants && product.variants.length > 0;
+  // On force le cast ici, car TS ne connaît pas variants dans extendedVariants
+  const extendedVariants = product.extendedVariants as ExtendedVariantsWithProps | undefined;
+
+  const hasExtendedVariants =
+    extendedVariants !== undefined &&
+    extendedVariants.variants !== undefined &&
+    extendedVariants.variants.length > 0;
 
   if (!hasExtendedVariants) {
-    // Fallback : afficher un message si pas de variantes
     return (
       <div className="p-3 bg-warning bg-opacity-10 rounded border border-warning">
         <div className="d-flex align-items-center">
@@ -32,31 +49,24 @@ export default function VariantPicker({product, settings}: {product: IProductIte
     );
   }
 
-  const variants = product.variants;
-  const characteristics = product.extendedVariants?.characteristics || [];
+  const variants = extendedVariants.variants;
+  const characteristics = extendedVariants.characteristics || [];
 
   return (
     <div>
-      {/* Sélecteur de variantes personnalisé */}
       <div className="mb-4">
         {characteristics.map((characteristic) => (
           <div key={characteristic.characteristic_id} className="mb-3">
-            <label className="form-label fw-semibold">
-              {characteristic.title}:
-            </label>
+            <label className="form-label fw-semibold">{characteristic.title}:</label>
             <div className="d-flex gap-2 flex-wrap">
               {characteristic.values?.map((value) => {
-                // Trouver la variante correspondante
-                const matchingVariant = variants.find(variant => 
-                  variant.characteristics?.some(char => 
-                    char.value_id === value.value_id
-                  )
+                const matchingVariant = variants.find((variant) =>
+                  variant.characteristics?.some((char) => char.value_id === value.value_id)
                 );
 
-                const isSelected = selectedVariant && 
-                  selectedVariant.characteristics?.some(char => 
-                    char.value_id === value.value_id
-                  );
+                const isSelected =
+                  selectedVariant &&
+                  selectedVariant.characteristics?.some((char) => char.value_id === value.value_id);
 
                 return (
                   <button
@@ -78,15 +88,12 @@ export default function VariantPicker({product, settings}: {product: IProductIte
         ))}
       </div>
 
-      {/* Affichage de la variante sélectionnée */}
       {selectedVariant && (
         <div className="mb-3 p-3 bg-light rounded">
           <div className="d-flex justify-content-between align-items-center">
             <div>
               <strong>{selectedVariant.title}</strong>
-              <div className="small text-muted">
-                SKU: {selectedVariant.sku}
-              </div>
+              <div className="small text-muted">SKU: {selectedVariant.sku}</div>
             </div>
             <div className="text-end">
               {selectedVariant.in_stock ? (
@@ -99,18 +106,9 @@ export default function VariantPicker({product, settings}: {product: IProductIte
         </div>
       )}
 
-      {/* Prix et SKU pour la variante sélectionnée */}
-      <PriceAndSku
-        product={product}
-        settings={settings}
-        variant={selectedVariant}
-      />
+      <PriceAndSku product={product} settings={settings} variant={selectedVariant} />
 
-      {/* Bouton d'ajout au panier */}
-      <AddToCart
-        itemId={selectedVariant?.inventoryItem?.item_id}
-        disabled={!selectedVariant?.in_stock}
-      />
+      <AddToCart itemId={selectedVariant?.inventoryItem?.item_id} disabled={!selectedVariant?.in_stock} />
     </div>
   );
 }
